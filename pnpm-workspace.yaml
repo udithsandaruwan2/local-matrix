@@ -1,0 +1,11 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+#Lifecycle-script allowlist (pnpm 10 blocks build scripts by default).
+onlyBuiltDependencies:
+  - esbuild
+  - "@swc/core"
+  - prisma
+  - "@prisma/engines"
+  - "@prisma/client"

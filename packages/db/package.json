@@ -1,0 +1,25 @@
+{
+  "name": "@local-matrix/db",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Prisma 7 schema, SQL migrations, RLS policies, and the tenant transaction helper.",
+  "scripts": {
+    "generate": "prisma generate",
+    "validate": "prisma validate",
+    "typecheck": "tsc -p . --noEmit",
+    "build": "tsc -p . --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "pg": "^8.19.0"
+  },
+  "devDependencies": {
+    "prisma": "^7.10.1",
+    "@prisma/config": "^7.10.1",
+    "@types/pg": "^8.19.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.12"
+  }
+}
