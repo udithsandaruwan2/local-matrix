@@ -1,0 +1,56 @@
+# Local development stack (Docker Compose is local-only per ADR-0008).
+# Orchestrated through `pnpm db:up|db:down|db:reset` from the repo root; credentials
+# come from the root .env (copy .env.example). Everything binds to loopback.
+
+name: local-matrix-dev
+
+services:
+  postgres:
+    # Rolling Postgres 17 line with TimescaleDB + PostGIS preinstalled; matches
+    # the recent minors Neon serves. Numeric-minor HA tags stop at pg17.2.
+    image: timescale/timescaledb-ha:pg17
+    container_name: local-matrix-postgres
+    ports:
+      # Host 5432 may already carry a native Postgres on dev machines; the
+      # container port stays 5432 while the host binds 15432.
+      - "127.0.0.1:15432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-local_matrix}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local_matrix}
+      POSTGRES_DB: ${POSTGRES_DB:-local_matrix}
+    volumes:
+      # timescaledb-ha keeps its cluster at /home/postgres/pgdata/data
+      - pgdata:/home/postgres/pgdata/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 30s
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: local-matrix-redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 24
+
+  mailpit:
+    # Dev-only SMTP catch-all; the web UI shows every email the platform sends.
+    image: axllent/mailpit:v1.32.0
+    container_name: local-matrix-mailpit
+    ports:
+      - "127.0.0.1:8025:8025"
+      - "127.0.0.1:1025:1025"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8025/"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+volumes:
+  pgdata: {}
