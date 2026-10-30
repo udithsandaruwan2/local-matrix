@@ -17,8 +17,9 @@ export default tseslint.config(
         "error",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
-      "@typescript-eslint/consistent-type-imports": ["error", { prefer: "type-imports" }]
-    }
+      // Deliberately OFF: `consistent-type-imports` misreports value imports that
+      // Nest consumes through `emitDecoratorMetadata` (constructor param types).
+    },
   },
   {
     files: ["**/*.js", "**/*.mjs"],
