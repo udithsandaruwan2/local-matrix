@@ -1,0 +1,28 @@
+{
+  "name": "local-matrix",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Real-time location and sensor intelligence, on one map.",
+  "packageManager": "pnpm@10.34.9",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "eslint .",
+    "hooks": "./scripts/install-hooks.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^4.1.12"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "@swc/core", "prisma", "@prisma/engines", "@prisma/client"]
+  }
+}

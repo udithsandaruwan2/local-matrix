@@ -63,3 +63,6 @@ venv/
 .eslintcache
 .stylelintcache
 *.tgz
+
+# Prisma 7 generated client (packages/db/src/generated)
+**/src/generated/

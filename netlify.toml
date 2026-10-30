@@ -1,0 +1,12 @@
+# Netlify — apps/web (static Vite SPA) and apps/embed assets
+# Placeholder from T-001. Full wiring (redirects, headers, previews) lands in T-012.
+
+[build]
+  command = "pnpm --filter @local-matrix/web build"
+  publish = "apps/web/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Embed runtime assets deploy as a second Netlify site in T-044; the per-embed
+# HTML shell (and its CSP frame-ancestors) is served by the Vercel API instead.
