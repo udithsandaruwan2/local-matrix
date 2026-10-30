@@ -1,0 +1,25 @@
+{
+  "name": "@local-matrix/worker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NestJS standalone worker: BullMQ consumers for alerts, webhooks, retention, rollups.",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/main.js",
+    "dev": "tsc -p tsconfig.build.json && node --watch dist/main.js",
+    "typecheck": "tsc -p . --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.2.8",
+    "@nestjs/core": "^11.2.8",
+    "bullmq": "^5.81.5",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.12"
+  }
+}
