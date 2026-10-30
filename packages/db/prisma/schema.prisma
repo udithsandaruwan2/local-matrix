@@ -1,10 +1,9 @@
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 // Prisma 7 rust-free client. Generated into src/generated so the API imports
-// the client from this package only. Migrations/DIRECT_URL wiring lands T-003.
+// the client from this package only. Models, indexes, and RLS arrive in T-003.
 generator client {
   provider = "prisma-client"
   output   = "../src/generated"
