@@ -5,7 +5,7 @@
 - **Size:** M
 - **Risk:** low
 - **Depends on:** T-001
-- **Status:** todo
+- **Status:** done
 
 ## Goal
 
@@ -47,3 +47,12 @@ pnpm db:up
 ## Notes
 
 Use a pinned `timescale/timescaledb-ha:pg17` image or a small derived image if the combined tag is stale. Pin image tags; do not use `latest`. Keep `DATABASE_URL` and `DIRECT_URL` identical locally but separate on Neon.
+
+## Delivery notes (2026-10-30)
+
+- All acceptance items verified live. `db:reset` confirms volume removal (`local-matrix-dev_pgdata` gone); data persists across `db:down`/`db:up`.
+- Host port 5432 is occupied on this dev machine by an unrelated native service, so the container publishes `127.0.0.1:15432:5432` — `.env.example` URLs use that port. On a clean machine `15432` stays consistent; do not assume 5432.
+- PostGIS 3.6 must be created per database (`CREATE EXTENSION postgis`) — the HA image ships the binaries but does not create the extension; T-003's first migration does this.
+- Image pins verified against the registry: `timescale/timescaledb-ha:pg17` (rolling PG17 line, latest push 2026-10-27), `redis:7.4-alpine`, `axllent/mailpit:v1.32.0` (GitHub tags; Docker Hub listing is stale for mailpit).
+- Mailpit healthcheck uses `wget` (present in the image); Postgres healthcheck is `pg_isready`; Redis is `PING`.
+- Timescale 2.31.0 (rolling pg17 line) ≈ Neon Timescale minors; schema must avoid compression-only features (see ADR-0002).

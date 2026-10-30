@@ -13,7 +13,7 @@ gates:
   G4: approved
   G5: pending
   G6: pending
-next_action: "Build M1: T-002 local infra (Docker Compose Postgres/PostGIS/Timescale + Redis + Mailpit) from dev-backend, then T-003 schema/RLS."
+next_action: "Build M1: T-003 (Prisma schema, hypertable, RLS, withWorkspace helper) via feature branch from dev-backend."
 ---
 
 # Project state
