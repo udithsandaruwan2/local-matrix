@@ -13,7 +13,7 @@ gates:
   G4: approved
   G5: pending
   G6: pending
-next_action: "Build M1: run T-001 (monorepo scaffold) via feature branches into dev-backend/dev-frontend, then T-002 local infra."
+next_action: "Build M1: T-002 local infra (Docker Compose Postgres/PostGIS/Timescale + Redis + Mailpit) from dev-backend, then T-003 schema/RLS."
 ---
 
 # Project state
@@ -38,9 +38,7 @@ Planning is complete and awaiting human approval. The stack is now React/Vite on
 
 ## Blockers
 
-- G4 approval — owner Udith Sandaruwan. Development is intentionally paused until approval.
-- Branch setup — `dev-frontend`, `dev-backend`, `prod-frontend`, and `prod-backend` must exist and be protected before T-001.
-- Toolchain: `pnpm` is not installed in the current environment; T-001 must verify Node 22 + pnpm 10 before scaffolding.
+- None currently. Branches exist and are protected; `pnpm install` is reproducible via the committed lockfile (locally run as `npx pnpm@10.34.9` because global pnpm is not on PATH).
 
 ## Recent decisions
 

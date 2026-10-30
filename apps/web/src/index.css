@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens from project/06-specs/design-reference.md.
+ * T-054 owns the full palette + light theme; these keep the shell consistent.
+ */
+@theme {
+  --color-app: #0b0e14;
+  --color-card: #12161e;
+  --color-line: #1e2530;
+  --color-ink: #e8edf4;
+  --color-muted: #8a94a6;
+  --color-accent: #34d399;
+  --color-accent-soft: #064e3b;
+}
