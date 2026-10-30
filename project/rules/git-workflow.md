@@ -12,6 +12,7 @@
 - Full-stack features use two PRs: backend first, then frontend; sync `dev-frontend` after shared contract changes.
 - Merge `dev-frontend` and `dev-backend` into `main` only when a phase or product is complete, after G5/G6 checks and human approval.
 - When a merge carries `project/` or `docs/` updates on one dev branch, open a small `chore(sync)` PR to keep the other dev branch identical so project state never forks.
+- Merge sync PRs with plain `gh pr merge --merge` — never `--delete-branch`: a sync PR's head is a long-lived branch, and gh deletes the head branch (locally; remote is protected) on merge.
 - Merge `main` into `prod-frontend` or `prod-backend`, and deploy, only when the human explicitly says “merge to production and deploy.”
 - `prod-*` must always match what is deployed. Record Netlify/Vercel deploy IDs and the migration version in release notes.
 - Tag releases from `main` only, after the phase-complete merge and changelog update.
