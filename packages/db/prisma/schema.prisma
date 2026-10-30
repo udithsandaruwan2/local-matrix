@@ -1,0 +1,10 @@
+datasource db {
+  provider = "postgresql"
+}
+
+// Prisma 7 rust-free client. Generated into src/generated so the API imports
+// the client from this package only. Models, indexes, and RLS arrive in T-003.
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}

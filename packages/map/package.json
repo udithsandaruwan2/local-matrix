@@ -1,0 +1,14 @@
+{
+  "name": "@local-matrix/map",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared MapLibre GL JS React components, styles, and layer helpers for console and embed.",
+  "main": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p . --noEmit",
+    "build": "tsc -p . --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
