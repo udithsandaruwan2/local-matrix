@@ -1,0 +1,21 @@
+# Project rules — Git and branch workflow
+
+- Long-lived branches are `main`, `dev-frontend`, `dev-backend`, `prod-frontend`, and `prod-backend`. Do not rename them.
+- `main` is phase/product-complete truth. It is not an integration branch.
+- `dev-frontend` owns `apps/web`, `apps/embed`, `packages/ui`, and `packages/map`.
+- `dev-backend` owns `apps/api`, `apps/worker`, `packages/db`, `packages/core`, and `packages/shared`.
+- Feature branches start from the matching `dev-*` branch and use `feat/<slug>`, `fix/<slug>`, `docs/<slug>`, `chore/<slug>`, `refactor/<slug>`, or `hotfix/<slug>`.
+- Every feature ends with several atomic Conventional Commits, a pushed branch, a PR, and a merge into `dev-*`.
+- Use the git CLI for commits and the `gh` CLI for PRs, checks, and merges.
+- Merge feature PRs with `gh pr merge --merge --delete-branch`; do not squash unless the human asks.
+- Never commit directly to `main`, `dev-*`, or `prod-*`. All changes arrive through a PR.
+- Full-stack features use two PRs: backend first, then frontend; sync `dev-frontend` after shared contract changes.
+- Merge `dev-frontend` and `dev-backend` into `main` only when a phase or product is complete, after G5/G6 checks and human approval.
+- Merge `main` into `prod-frontend` or `prod-backend`, and deploy, only when the human explicitly says “merge to production and deploy.”
+- `prod-*` must always match what is deployed. Record Netlify/Vercel deploy IDs and the migration version in release notes.
+- Tag releases from `main` only, after the phase-complete merge and changelog update.
+- Hotfix from the affected `prod-*` branch, then sync the fix back to `main` and `dev-*`.
+- Never force-push, rebase, or delete a shared branch without explicit human approval.
+- Never `git add .`; stage explicit paths and inspect `git diff --staged`.
+- One worktree per task and per agent; branch from the correct `dev-*` branch.
+- If a file looks like someone else's work, stop and ask before committing or reverting it.
