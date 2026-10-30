@@ -13,7 +13,10 @@
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "lint": "eslint .",
-    "hooks": "./scripts/install-hooks.sh"
+    "hooks": "./scripts/install-hooks.sh",
+    "db:up": "sh -c 'test -f .env || (echo \"(env) creating .env from .env.example\"; cp .env.example .env); exec docker compose -f infra/docker/compose.dev.yml --project-directory . --env-file .env up -d --wait'",
+    "db:down": "sh -c 'exec docker compose -f infra/docker/compose.dev.yml --project-directory . --env-file .env down'",
+    "db:reset": "sh -c 'exec docker compose -f infra/docker/compose.dev.yml --project-directory . --env-file .env down -v'"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",

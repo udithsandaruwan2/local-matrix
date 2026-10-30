@@ -14,7 +14,7 @@ Rules:
 | ID | Task | Size | Depends | Status |
 |---|---|---|---|---|
 | [T-001](T-001-monorepo-scaffold.md) | Monorepo scaffold + tooling + CI | M | — | done |
-| [T-002](T-002-local-infra.md) | Local infra: Postgres/PostGIS/Timescale + Redis | M | T-001 | todo |
+| [T-002](T-002-local-infra.md) | Local infra: Postgres/PostGIS/Timescale + Redis | M | T-001 | done |
 | [T-003](T-003-schema-rls.md) | Schema, hypertable, indexes, RLS | L | T-002 | todo |
 | [T-004](T-004-api-skeleton.md) | API skeleton: config, errors, health, OpenAPI | M | T-001 | todo |
 | [T-005](T-005-devices-api-keys.md) | Devices + API keys + auth guards | M | T-003, T-004 | todo |
