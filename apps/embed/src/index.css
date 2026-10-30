@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Same token base as apps/web; embed pages stay dark-only (see design reference). */
+@theme {
+  --color-app: #0b0e14;
+  --color-card: #12161e;
+  --color-line: #1e2530;
+  --color-ink: #e8edf4;
+  --color-muted: #8a94a6;
+  --color-accent: #34d399;
+  --color-accent-soft: #064e3b;
+}
