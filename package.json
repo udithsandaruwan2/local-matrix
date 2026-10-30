@@ -16,8 +16,9 @@
     "hooks": "./scripts/install-hooks.sh"
   },
   "devDependencies": {
-    "@types/node": "^24.10.1",
-    "eslint": "^9.39.2",
+    "@types/node": "^24.19.2",
+    "eslint": "^9.39.5",
+    "turbo": "^2.11.10",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.72.1",
     "vitest": "^4.1.12"
